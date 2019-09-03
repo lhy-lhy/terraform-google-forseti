@@ -385,6 +385,12 @@ variable "log_sink_enabled" {
   default     = "true"
 }
 
+variable "manage_rules_enabled" {
+  description = "A toggle to enable or disable the management of rules"
+  type        = bool
+  default     = true
+}
+
 variable "resource_enabled" {
   description = "Resource scanner enabled."
   default     = "true"
@@ -758,4 +764,3 @@ variable "groups_settings_violations_should_notify" {
   description = "Notify for groups settings violations"
   default     = "true"
 }
-
