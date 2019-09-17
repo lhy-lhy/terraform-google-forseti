@@ -23,12 +23,12 @@ variable "project_id" {
 
 variable "forseti_version" {
   description = "The version of Forseti to install"
-  default     = "v2.19.1"
+  default     = "v2.20.0"
 }
 
 variable "forseti_repo_url" {
   description = "Git repo for the Forseti installation"
-  default     = "https://github.com/GoogleCloudPlatform/forseti-security"
+  default     = "https://github.com/forseti-security/forseti-security"
 }
 
 variable "forseti_home" {
@@ -40,17 +40,17 @@ variable "forseti_home" {
 # Forseti client #
 #----------------#
 variable "client_type" {
-  description = "GCE Forseti Client role instance size"
+  description = "GCE Forseti Client machine type"
   default     = "n1-standard-2"
 }
 
 variable "client_boot_image" {
-  description = "GCE Forseti Client role instance size"
+  description = "GCE Forseti Client boot image"
   default     = "ubuntu-os-cloud/ubuntu-1804-lts"
 }
 
 variable "client_region" {
-  description = "GCE Forseti Client role region size"
+  description = "GCE Forseti Client region"
   default     = "us-central1"
 }
 
@@ -116,4 +116,3 @@ variable "services" {
   type        = list(string)
   default     = []
 }
-

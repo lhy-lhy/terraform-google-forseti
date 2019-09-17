@@ -28,12 +28,12 @@ variable "gsuite_admin_email" {
 
 variable "forseti_version" {
   description = "The version of Forseti to install"
-  default     = "v2.19.1"
+  default     = "v2.20.0"
 }
 
 variable "forseti_repo_url" {
   description = "Git repo for the Forseti installation"
-  default     = "https://github.com/GoogleCloudPlatform/forseti-security"
+  default     = "https://github.com/forseti-security/forseti-security"
 }
 
 variable "forseti_email_recipient" {
@@ -66,17 +66,17 @@ variable "resource_name_suffix" {
 # Forseti server #
 #----------------#
 variable "server_type" {
-  description = "GCE Forseti Server role instance size"
+  description = "GCE Forseti Server machine type"
   default     = "n1-standard-2"
 }
 
 variable "server_region" {
-  description = "GCP region where Forseti will be deployed"
+  description = "GCE Forseti Server region"
   default     = "us-central1"
 }
 
 variable "server_boot_image" {
-  description = "GCE instance image that is being used, currently Ubuntu only support is available"
+  description = "GCE Forseti Server boot image - Currently only Ubuntu is supported"
   default     = "ubuntu-os-cloud/ubuntu-1804-lts"
 }
 
@@ -122,7 +122,8 @@ variable "server_access_config" {
 
 variable "server_private" {
   description = "Private GCE Forseti Server VM (no public IP)"
-  default     = "false"
+  default     = false
+  type        = bool
 }
 
 #---------------------------------#
@@ -343,7 +344,7 @@ variable "sqladmin_disable_polling" {
 }
 
 variable "storage_disable_polling" {
-  description = "Whetservicemanagement_disable_pollingher to disable polling for Storage API"
+  description = "Whether to disable polling for Storage API"
   type        = bool
   default     = false
 }
@@ -474,7 +475,8 @@ variable "policy_library_repository_url" {
 
 variable "policy_library_sync_enabled" {
   description = "Sync config validator policy library from private repository."
-  default     = "false"
+  type        = bool
+  default     = false
 }
 
 variable "policy_library_sync_gcs_directory_name" {
@@ -684,17 +686,17 @@ variable "groups_settings_violations_should_notify" {
 # Forseti client #
 #----------------#
 variable "client_type" {
-  description = "GCE Forseti Client role instance size"
+  description = "GCE Forseti Client machine type"
   default     = "n1-standard-2"
 }
 
 variable "client_boot_image" {
-  description = "GCE Forseti Client role instance size"
+  description = "GCE Forseti Client boot image"
   default     = "ubuntu-os-cloud/ubuntu-1804-lts"
 }
 
 variable "client_region" {
-  description = "GCE Forseti Client role region size"
+  description = "GCE Forseti Client region"
   default     = "us-central1"
 }
 
@@ -724,7 +726,8 @@ variable "client_access_config" {
 
 variable "client_private" {
   description = "Private GCE Forseti Client VM (no public IP)"
-  default     = "false"
+  default     = false
+  type        = bool
 }
 
 #------------#
@@ -743,6 +746,17 @@ variable "cloudsql_db_name" {
 variable "cloudsql_db_port" {
   description = "CloudSQL database port"
   default     = "3306"
+}
+
+variable "cloudsql_disk_size" {
+  description = "The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased."
+  default     = "25"
+}
+
+variable "cloudsql_private" {
+  description = "Whether to enable private network and not to create public IP for CloudSQL Instance"
+  default     = false
+  type        = bool
 }
 
 variable "cloudsql_proxy_arch" {
